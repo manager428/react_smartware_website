@@ -1,0 +1,215 @@
+@import '../bootstrap-extended/include'; // Bootstrap includes
+@import '../components/include'; // Components includes
+
+$auth-1-inner-max-width: 400px !default;
+$auth-background-color: #202833 !default;
+$auth-btn-color: #0082D5 !default;
+
+.content-body {
+  background-color: $auth-background-color;
+}
+
+.auth-wrapper {
+  display: flex;
+  flex-basis: 100%;
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+  width: 100%;
+
+  .auth-inner {
+    width: 100%;
+
+    .card-body {
+      background-color: $auth-background-color;
+    }
+  }
+
+  &.auth-basic {
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; // For v1 scroll for long auth form
+    .auth-inner {
+      position: relative;
+    }
+    
+  }
+
+  &.auth-cover {
+    align-items: flex-start;
+    .auth-inner {
+      height: 100vh;
+      overflow-y: auto; // For v2 scroll for long auth form
+      height: calc(var(--vh, 1vh) * 100);
+    }
+    .brand-logo {
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+      margin: 0;
+      z-index: 1;
+      justify-content: unset;
+    }
+  }
+
+  &.auth-basic .auth-inner {
+    // max-width: $auth-1-inner-max-width;
+
+    .card-body {
+      .card-title {
+        color: $white;
+      }
+    }
+    .form-label {
+      color: $white;
+    }
+
+    .create_account {
+      color: $white;
+      text-decoration-line: underline;
+    }
+
+    .btn-auth-primary {
+      background-color: $auth-btn-color !important;
+      border-color: $auth-btn-color !important;
+    }
+  }
+
+  .brand-logo {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0 2rem 0;
+    .brand-text {
+      font-weight: 600;
+    }
+  }
+
+  .auth-footer-btn {
+    .btn {
+      padding: 0.6rem !important;
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+
+  // two steps verification
+  .auth-input {
+    max-width: 50px;
+    padding-right: 0.571rem;
+    padding-left: 0.571rem;
+  }
+
+  // multi-steps register
+  .custom-options-checkable {
+    .plan-price {
+      .pricing-value {
+        font-size: 3rem;
+      }
+      sup {
+        top: -1.5rem;
+        left: 0.2rem;
+      }
+      sub {
+        bottom: 0;
+        right: 0.14rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .auth-wrapper {
+    &.auth-cover .auth-card {
+      width: $auth-1-inner-max-width;
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .auth-wrapper.auth-cover .brand-logo {
+    left: 1.5rem;
+    padding-left: 0;
+  }
+}
+
+.auth-wrapper .auth-bg {
+  background-color: $auth-background-color;
+  overflow: hidden;
+}
+.mobile-login {
+  max-width: 400px;
+  width: 300px;
+}
+
+.auth-register-form, .auth-login-form {
+
+  .forgot-password-text {
+    text-decoration-line: underline;
+  }
+  
+  .btn-auth-primary {
+    background-color: $auth-btn-color !important;
+    border-color: $auth-btn-color !important;
+  }
+
+  .form-check-input:checked {
+    background-color: $auth-btn-color;
+    border-color: $auth-btn-color;
+  }
+
+  .form-label {
+    color: $white;
+  }
+
+  .create_account_label {
+    color: $white;
+  }
+
+  a {
+    color: $white;
+  }
+
+  .create_account {
+    text-decoration-line: underline !important;
+  }
+}
+
+.dark-layout {
+  .auth-wrapper .auth-bg {
+    background-color: $auth-background-color;
+  }
+}
+
+// Auth pages for mobile and small height & width screen
+@media (max-height: 825px) and (max-width: 991.98px) {
+  .dark-layout {
+    .auth-wrapper .auth-inner {
+      background-color: $auth-background-color;
+    }
+  }
+  .auth-wrapper {
+    .auth-bg {
+      padding-top: 3rem;
+      margin: auto 0;
+    }
+    .auth-inner {
+      background-color: $auth-background-color;
+    }
+    &.auth-cover {
+      .auth-inner {
+        padding-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+      .brand-logo {
+        position: relative;
+        left: 0;
+        padding-left: 1.5rem;
+      }
+    }
+  }
+}
